@@ -43,7 +43,7 @@ fn statement_expression() -> i32 {
 
     //This is statement.
     99;
-    //This is expression/
+    //This is expression.
     100
 }
 
