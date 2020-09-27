@@ -14,9 +14,24 @@ fn main() {
     }
     println!("The value of x is: {}", x);
 
-    another_function(32);
+    another_function(32, 99);
+
+    statement_expression();
 }
 
-fn another_function(x: i32) {
+fn another_function(x: i32, y: i64) {
     println!("The value of x is: {}", x);
+    println!("The value of y is: {}", y);
+}
+
+fn statement_expression() {
+    let x = 2;
+
+    let y = {
+        let x = 3;
+        x + 1
+    };
+
+    println!("The value of x is: {}", x);
+    println!("The value of y is: {}", y);
 }
