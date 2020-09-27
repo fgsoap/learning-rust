@@ -13,4 +13,10 @@ fn main() {
         _ => {}
     }
     println!("The value of x is: {}", x);
+
+    another_function(32);
+}
+
+fn another_function(x: i32) {
+    println!("The value of x is: {}", x);
 }
