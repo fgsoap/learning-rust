@@ -8,3 +8,4 @@ edition = "2018"
 
 [dependencies]
 ssh2 = "0.8.0"
+rpassword = "5.0"

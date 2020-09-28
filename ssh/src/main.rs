@@ -23,7 +23,6 @@ fn main()
     sess.handshake().unwrap();
 
     let mut username = String::new();
-    let mut password = String::new();
 
     println!("Please input your username:");
     io::stdin()
@@ -35,16 +34,8 @@ fn main()
         Err(err) => err.to_string(),
     };
 
-    println!("Please input your password:");
-    io::stdin()
-        .read_line(&mut password)
-        .expect("Failed to read password.");
-
-    let password: String = match password.trim().parse() {
-        Ok(str) => str,
-        Err(err) => err.to_string(),
-    };
-
+    // Prompt for a password on STDOUT
+    let password = rpassword::prompt_password_stdout("Please input your password: ").unwrap();
     sess.userauth_password(&username, &password).unwrap();
 
     assert!(sess.authenticated());
