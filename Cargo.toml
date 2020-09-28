@@ -3,5 +3,6 @@
 members = [
     "guessing_game",
     "variables",
-    "branches"
+    "branches",
+    "loops"
 ]
