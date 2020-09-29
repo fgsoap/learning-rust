@@ -35,13 +35,25 @@ fn main()
     };
 
     // Prompt for a password on STDOUT
-    let password = rpassword::prompt_password_stdout("Please input your password: ").unwrap();
+    let password = rpassword::prompt_password_stdout("Please input your password:").unwrap();
     sess.userauth_password(&username, &password).unwrap();
 
     assert!(sess.authenticated());
 
     let mut channel = sess.channel_session().unwrap();
-    channel.exec("cat /var/log/*.log").unwrap();
+
+    let mut command = String::new();
+    println!("Please input your command:");
+    io::stdin()
+        .read_line(&mut command)
+        .expect("Failed to read command.");
+
+    let command: String = match command.trim().parse() {
+        Ok(str) => str,
+        Err(err) => err.to_string(),
+    };
+    channel.exec(&command).unwrap();
+
     let mut s = String::new();
     channel.read_to_string(&mut s).unwrap();
     println!("{}", s);
