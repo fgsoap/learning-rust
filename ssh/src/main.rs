@@ -4,23 +4,32 @@ use std::net::TcpStream;
 
 use actix_web::{App, HttpResponse, HttpServer, Result, web};
 use askama::Template;
+use log::{info, warn};
 use ssh2::Session;
 
 fn ssh(uri: &String, u: &String, p: &String, c: &String) -> String {
+    info!("Start to connect to {}.", uri);
     let tcp = TcpStream::connect(uri).unwrap();
     let mut sess = Session::new().unwrap();
     sess.set_tcp_stream(tcp);
     sess.handshake().unwrap();
-    sess.userauth_password(u, p).unwrap_or_default();
+    let mut auth_err = String::new();
+    sess.userauth_password(u, p).unwrap_or_else(|error| {
+        auth_err = error.to_string();
+    });
     if !sess.authenticated() {
-        return "Not authenticated!".to_string();
+        warn!("{}", auth_err);
+        return auth_err.to_string();
     }
+    info!("Authenticated!");
     // assert!(sess.authenticated());
     let mut channel = sess.channel_session().unwrap();
     channel.exec(c).unwrap();
     let mut s = String::new();
     channel.read_to_string(&mut s).unwrap();
-    return s;
+    channel.close().unwrap();
+    info!("Disconnect from {} successfully.", uri);
+    return s.trim().to_string();
 }
 
 #[derive(Template)]
@@ -53,6 +62,7 @@ async fn index(query: web::Query<HashMap<String, String>>) -> Result<HttpRespons
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    env_logger::init();
     // start http server
     HttpServer::new(move || {
         App::new().service(web::resource("/").route(web::get().to(index)))

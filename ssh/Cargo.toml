@@ -11,6 +11,8 @@ ssh2 = "0.8.0"
 rpassword = "5.0"
 actix-web = "3"
 askama = "0.9"
+log = "0.4"
+env_logger = "0.7"
 
 [build-dependencies]
 askama = "0.9"
