@@ -1,61 +1,60 @@
-use std::io;
+use std::collections::HashMap;
 use std::io::Read;
 use std::net::TcpStream;
 
+use actix_web::{App, HttpResponse, HttpServer, Result, web};
+use askama::Template;
 use ssh2::Session;
 
-fn main()
-{
-    let mut ssh_uri = String::new();
-
-    println!("Please input the Server IP and SSH Port: IP:Port");
-    io::stdin()
-        .read_line(&mut ssh_uri)
-        .expect("Failed to read SSH URI.");
-    let ssh_uri: String = match ssh_uri.trim().parse() {
-        Ok(str) => str,
-        Err(err) => err.to_string(),
-    };
-
-    let tcp = TcpStream::connect(&ssh_uri).unwrap();
+fn ssh(uri: &String, u: &String, p: &String, c: &String) -> String {
+    let tcp = TcpStream::connect(uri).unwrap();
     let mut sess = Session::new().unwrap();
     sess.set_tcp_stream(tcp);
     sess.handshake().unwrap();
-
-    let mut username = String::new();
-
-    println!("Please input your username:");
-    io::stdin()
-        .read_line(&mut username)
-        .expect("Failed to read username.");
-
-    let username: String = match username.trim().parse() {
-        Ok(str) => str,
-        Err(err) => err.to_string(),
-    };
-
-    // Prompt for a password on STDOUT
-    let password = rpassword::prompt_password_stdout("Please input your password:").unwrap();
-    sess.userauth_password(&username, &password).unwrap();
-
+    sess.userauth_password(u, p).unwrap();
     assert!(sess.authenticated());
-
     let mut channel = sess.channel_session().unwrap();
-
-    let mut command = String::new();
-    println!("Please input your command:");
-    io::stdin()
-        .read_line(&mut command)
-        .expect("Failed to read command.");
-
-    let command: String = match command.trim().parse() {
-        Ok(str) => str,
-        Err(err) => err.to_string(),
-    };
-    channel.exec(&command).unwrap();
-
+    channel.exec(c).unwrap();
     let mut s = String::new();
     channel.read_to_string(&mut s).unwrap();
-    println!("{}", s);
-    println!("{}", channel.exit_status().unwrap());
+    return s;
+}
+
+#[derive(Template)]
+#[template(path = "command.html")]
+struct CommandTemplate<'a> {
+    text: &'a str
+}
+
+#[derive(Template)]
+#[template(path = "index.html")]
+struct Index;
+
+async fn index(query: web::Query<HashMap<String, String>>) -> Result<HttpResponse> {
+    let uri = query.get("ssh_uri");
+    let u = query.get("username");
+    let p = query.get("password");
+    let s = if let Some(c) = query.get("command")
+    {
+        let r = ssh(uri.unwrap(), u.unwrap(), p.unwrap(), c);
+        CommandTemplate {
+            text: &*r
+        }
+            .render()
+            .unwrap()
+    } else {
+        Index.render().unwrap()
+    };
+    Ok(HttpResponse::Ok().content_type("text/html").body(s))
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    // start http server
+    HttpServer::new(move || {
+        App::new().service(web::resource("/").route(web::get().to(index)))
+    })
+        .bind("127.0.0.1:8080")?
+        .run()
+        .await
 }
