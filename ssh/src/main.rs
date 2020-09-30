@@ -11,8 +11,11 @@ fn ssh(uri: &String, u: &String, p: &String, c: &String) -> String {
     let mut sess = Session::new().unwrap();
     sess.set_tcp_stream(tcp);
     sess.handshake().unwrap();
-    sess.userauth_password(u, p).unwrap();
-    assert!(sess.authenticated());
+    sess.userauth_password(u, p).unwrap_or_default();
+    if !sess.authenticated() {
+        return "Not authenticated!".to_string();
+    }
+    // assert!(sess.authenticated());
     let mut channel = sess.channel_session().unwrap();
     channel.exec(c).unwrap();
     let mut s = String::new();
