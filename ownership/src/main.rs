@@ -17,4 +17,23 @@ fn main() {
     let m = (1, 2, "Hello World!");
     let k = m;
     println!("m = {:?}, n = {:?}", m, k);
+
+    // example of ownership
+    let s = String::from("hello");
+    takes_ownership(s);
+    // not work, s is dropped
+    // println!("{}", s);
+
+    let x = 5;
+    makes_copy(x);
+    // still keep x
+    println!("{}", x);
+}
+
+fn takes_ownership(some_string: String) {
+    println!("{}", some_string);
+}
+
+fn makes_copy(some_integer: i32) {
+    println!("{}", some_integer);
 }
