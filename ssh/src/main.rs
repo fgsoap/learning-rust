@@ -29,7 +29,7 @@ fn ssh(uri: &String, u: &String, p: &String, c: &String) -> String {
     channel.read_to_string(&mut s).unwrap();
     channel.close().unwrap();
     info!("Disconnect from {} successfully.", uri);
-    return s.trim().to_string();
+    return s;
 }
 
 #[derive(Template)]
