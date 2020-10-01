@@ -11,44 +11,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
+
 <div class="content-wrapper">
-    <div class="content">
-        <h2 class="content-head is-center">Welcome to Actix SSH!</h2>
-        <div class="pure-g is-center">
-            <div class="pure-u-1"><p style="white-space: pre-wrap;">
-                <form class="pure-form pure-form-stacked is-center">
-                    <fieldset>
-                        <legend>What is Your Order?</legend>
-                        <div class="pure-control-group">
-                            <label for="ssh_uri">SSH_URI</label>
-                            <input type="text" id="ssh_uri" name="ssh_uri" placeholder="SSH_URI"/>
-                            <span class="pure-form-message-inline">This is a required field.</span>
-                        </div>
-                        <div class="pure-control-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="username" placeholder="Username"/>
-                            <span class="pure-form-message-inline">This is a required field.</span>
-                        </div>
-                        <div class="pure-control-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Password"/>
-                        </div>
-                        <div class="pure-control-group">
-                            <label for="command">Command</label>
-                            <input type="text" id="command" name="command" placeholder="Command"/>
-                            <span class="pure-form-message-inline">This is a required field.</span>
-                        </div>
-                        <label for="stacked-state">State</label>
-                        <select id="stacked-state">
-                            <option>AL</option>
-                            <option>CA</option>
-                        </select>
-                        <br/>
-                        <button type="submit" class="pure-button pure-button-primary">Submit</button>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
+    <h2 class="content-subhead">Welcome to Actix SSH!</h2>
+    <div>
+        <form class=" pure-form pure-form-aligned">
+            <fieldset>
+                <legend>What is Your Order?</legend>
+                <div class="pure-control-group">
+                    <label for="ssh_uri">SSH_URI</label>
+                    <input type="text" id="ssh_uri" name="ssh_uri" placeholder="SSH_URI"/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
+                </div>
+                <div class="pure-control-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Username"/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
+                </div>
+                <div class="pure-control-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password"/>
+                </div>
+                <div class="pure-control-group">
+                    <label for="command">Command</label>
+                    <input class="pure-input-1-2" type="text" id="command" name="command" placeholder="Command"/>
+                    <span class="pure-form-message-inline">This is a required field.</span>
+                </div>
+                <!--                        <label for="stacked-state">State</label>-->
+                <!--                        <select id="stacked-state">-->
+                <!--                            <option>AL</option>-->
+                <!--                            <option>CA</option>-->
+                <!--                        </select>-->
+                <div class="pure-controls">
+                    <button type="submit" class="pure-button pure-button-primary">Submit</button>
+                </div>
+            </fieldset>
+        </form>
     </div>
 </div>
 </body>
