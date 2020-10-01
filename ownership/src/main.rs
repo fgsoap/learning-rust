@@ -11,5 +11,10 @@ fn main() {
     // on stack
     let x = 5;
     let y = x;
-    println!("x = {}, y = {}", x,y);
+    println!("x = {}, y = {}", x, y);
+
+    // tuple with Copy trait
+    let m = (1, 2, "Hello World!");
+    let k = m;
+    println!("m = {:?}, n = {:?}", m, k);
 }
