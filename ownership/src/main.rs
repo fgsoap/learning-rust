@@ -41,10 +41,10 @@ fn main() {
 
     // try reference instead of transfer ownership
     let s1 = String::from("hello");
+    // s1 will not be dropped
     let len = calculate_length(&s1);
     println!("The length of '{}' is {}.", s1, len);
 }
-
 fn calculate_length(s: &String) -> usize {
     s.len()
 }
