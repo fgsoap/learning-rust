@@ -39,7 +39,7 @@ fn main() {
     let s3 = takes_and_gives_back(s2);
     println!("s3 is: {}", s3);
 
-    // try reference instead of transfer ownership
+    // try `borrowing` instead of transfer ownership
     let s1 = String::from("hello");
     // s1 will not be dropped
     let len = calculate_length(&s1);
