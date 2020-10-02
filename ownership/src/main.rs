@@ -38,6 +38,15 @@ fn main() {
 
     let s3 = takes_and_gives_back(s2);
     println!("s3 is: {}", s3);
+
+    // try reference instead of transfer ownership
+    let s1 = String::from("hello");
+    let len = calculate_length(&s1);
+    println!("The length of '{}' is {}.", s1, len);
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }
 
 fn gives_ownership() -> String {
