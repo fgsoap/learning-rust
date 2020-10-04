@@ -1,10 +1,11 @@
 fn main() {
-    let s = String::from("Hello World");
-    let ss = "Hi World";
-    let s_word = first_word(&s);
-    let ss_word = first_word(&ss);
+    let my_string = String::from("hello world");
+    let word = first_word(&my_string[..]); // slice of my_string
+    println!("{}", word);
 
-    println!("{}, {}", s_word, ss_word);
+    let my_string_literal = "hello world";
+    let word = first_word(&my_string_literal);
+    println!("{}", word);
 }
 
 fn first_word(s: &str) -> &str {
