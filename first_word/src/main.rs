@@ -3,18 +3,17 @@ fn main() {
 
     let word = first_word(&s); // get 5
 
-    s.clear(); // clear s
-
-    println!("{}", word); // word is useless as s is cleared
+    // s.clear(); // clear s
+    println!("{}", word);
 }
 
-fn first_word(s: &String) -> usize {
+fn first_word(s: &String) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
         if item == b' ' {
-            return i;
+            return &s[0..i];
         }
     }
-    s.len()
+    return &s[..];
 }
