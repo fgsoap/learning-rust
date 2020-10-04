@@ -4,6 +4,7 @@ fn main() {
     println!("{}", word);
 
     let my_string_literal = "hello world";
+    // let word = first_word(my_string_literal);  //this also work as my_string_literal is &str
     let word = first_word(&my_string_literal);
     println!("{}", word);
 }
