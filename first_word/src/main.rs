@@ -1,13 +1,13 @@
 fn main() {
-    let mut s = String::from("Hello World");
+    let s = String::from("Hello World");
+    let ss = "Hi World";
+    let s_word = first_word(&s);
+    let ss_word = first_word(&ss);
 
-    let word = first_word(&s); // get 'Hello'
-
-    // s.clear(); // clear s
-    println!("{}", word);
+    println!("{}, {}", s_word, ss_word);
 }
 
-fn first_word(s: &String) -> &str {
+fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
 
     for (i, &item) in bytes.iter().enumerate() {
