@@ -1,7 +1,7 @@
 fn main() {
     let mut s = String::from("Hello World");
 
-    let word = first_word(&s); // get 5
+    let word = first_word(&s); // get 'Hello'
 
     // s.clear(); // clear s
     println!("{}", word);
