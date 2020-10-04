@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::io::Read;
 use std::net::TcpStream;
 
-use actix_web::{App, HttpResponse, HttpServer, Result, web};
+use actix_web::{web, App, HttpResponse, HttpServer, Result};
 use askama::Template;
 use log::{info, warn};
 use ssh2::Session;
@@ -35,7 +35,7 @@ fn ssh(uri: &String, u: &String, p: &String, c: &String) -> String {
 #[derive(Template)]
 #[template(path = "command.html")]
 struct CommandTemplate<'a> {
-    text: &'a str
+    text: &'a str,
 }
 
 #[derive(Template)]
@@ -46,14 +46,9 @@ async fn index(query: web::Query<HashMap<String, String>>) -> Result<HttpRespons
     let uri = query.get("ssh_uri");
     let u = query.get("username");
     let p = query.get("password");
-    let s = if let Some(c) = query.get("command")
-    {
+    let s = if let Some(c) = query.get("command") {
         let r = ssh(uri.unwrap(), u.unwrap(), p.unwrap(), c);
-        CommandTemplate {
-            text: &*r
-        }
-            .render()
-            .unwrap()
+        CommandTemplate { text: &*r }.render().unwrap()
     } else {
         Index.render().unwrap()
     };
@@ -62,11 +57,10 @@ async fn index(query: web::Query<HashMap<String, String>>) -> Result<HttpRespons
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    std::env::set_var("RUST_LOG", "ssh=info");
     env_logger::init();
     // start http server
-    HttpServer::new(move || {
-        App::new().service(web::resource("/").route(web::get().to(index)))
-    })
+    HttpServer::new(move || App::new().service(web::resource("/").route(web::get().to(index))))
         .bind("127.0.0.1:8080")?
         .run()
         .await
