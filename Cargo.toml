@@ -7,5 +7,6 @@ members = [
     "loops",
     "ssh",
     "ownership",
-    "first_word"
+    "first_word",
+    "slice"
 ]
