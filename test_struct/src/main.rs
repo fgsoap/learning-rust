@@ -14,7 +14,7 @@ fn main() {
         sign_in_count: 1,
     };
     user1.email = String::from("anotheremail@example.com");
-    println!("{:#?}", user1);
+    println!("user1: {:#?}", user1);
 
     fn build_user(email: String, username: String) -> User {
         User {
@@ -25,7 +25,15 @@ fn main() {
         }
     }
     println!(
-        "{:#?}",
+        "build_user: {:#?}",
         build_user(String::from("test@example.com"), String::from("test"))
     );
+
+    let user2 = User {
+        email: String::from("another@example.com"),
+        username: String::from("anotherusername567"),
+        active: user1.active,
+        sign_in_count: user1.sign_in_count,
+    };
+    println!("user2: {:#?}", user2);
 }
