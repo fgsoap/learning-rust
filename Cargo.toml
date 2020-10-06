@@ -8,5 +8,6 @@ members = [
     "ssh",
     "ownership",
     "first_word",
-    "slice"
+    "slice",
+    "test_struct"
 ]
