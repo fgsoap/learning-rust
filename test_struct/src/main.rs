@@ -37,4 +37,12 @@ fn main() {
         ..user1
     };
     println!("user2: {:#?}", user2);
+
+    #[derive(Debug)]
+    struct Color(i32, i32, i32);
+    #[derive(Debug)]
+    struct Point(i32, i32, i32);
+    let black = Color(0, 0, 0);
+    let origin = Point(0, 0, 0);
+    println!("black: {:#?}\norigin: {:#?}", black, origin);
 }
