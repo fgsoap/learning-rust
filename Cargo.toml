@@ -9,5 +9,6 @@ members = [
     "ownership",
     "first_word",
     "slice",
-    "test_struct"
+    "test_struct",
+    "rectangles"
 ]
