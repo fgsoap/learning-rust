@@ -8,7 +8,7 @@
 
       <label>Server: </label>
       <select style="width: 10%" v-model="SSH" required>
-        <option value="10.xx.xx.7:22" selected="selected">A</option>
+        <option value="10.xx.xx.71:22" selected="selected">10.xx.xx.71 </option>
         <option value="10.xx.xx.3:22">B</option>
         <option value="10.xx.xx.1:22">C</option>
         <option value="10.xx.xx.10:22">D</option>
@@ -53,12 +53,15 @@
       </div>
       <br />
 
-      <button id="submit" @click="exec">Execute</button>
+      <button id="submit" @click="exec">Execute</button>&nbsp;
+      <button id="submit" @click="cleanup">Cleanup</button>
       <br />
 
     </div>
     <div style="display: flex">
-      <code v-html="Result" style="white-space: pre-wrap;"></code>
+      <code style="white-space: pre-wrap;">
+        <text-highlight :queries="queries">{{ Result }}</text-highlight>
+      </code>
     </div>
   </div>
 </template>
@@ -72,7 +75,8 @@ export default {
       Username: "",
       Password: "",
       Command: "",
-      Result: ""
+      Result: "",
+      queries: ['ERROR', 'WARNING']
     };
   },
   methods: {
@@ -103,6 +107,9 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    cleanup() {
+      this.Result = "";
     },
   },
 };
@@ -174,11 +181,6 @@ dialog::backdrop {
 #closeDialog:focus {
   opacity: 0.92;
   cursor: pointer;
-}
-#user-info {
-  width: 250px;
-  margin: 0 auto;
-  padding-top: 44px;
 }
 @media only screen and (min-width: 600px) {
   #content {
