@@ -1,9 +1,10 @@
 use actix_cors::Cors;
 use actix_web::{http::header, middleware::Logger, web, App, HttpServer};
+
 mod ssh;
 
 #[actix_web::main]
-fn main() -> std::io::Result<()> {
+async fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
 
@@ -21,7 +22,7 @@ fn main() -> std::io::Result<()> {
             .wrap(Logger::default())
             .service(web::resource("/template-web-ssh").route(web::post().to(ssh::exec)))
     })
-    .bind("127.0.0.1:8000")?
-    .run()
-    .await
+        .bind("127.0.0.1:8000")?
+        .run()
+        .await
 }
