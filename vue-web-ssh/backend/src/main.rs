@@ -3,7 +3,7 @@ use actix_web::{http::header, middleware::Logger, web, App, HttpServer};
 use ssh;
 
 #[actix_web::main]
-async fn main() -> std::io::Result<()> {
+fn main() -> std::io::Result<()> {
     std::env::set_var("RUST_LOG", "actix_web=info");
     env_logger::init();
 

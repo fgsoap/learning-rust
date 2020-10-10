@@ -6,7 +6,7 @@ use std::io::Read;
 use std::net::TcpStream;
 
 pub mod ssh {
-    pub async fn exec(info: web::Json<Info>) -> web::Json<Result> {
+    pub fn exec(info: web::Json<Info>) -> web::Json<Result> {
         info!("Start to connect to {}.", info.ssh_uri.clone());
         let tcp = TcpStream::connect(info.ssh_uri.clone()).unwrap();
         let mut sess = Session::new().unwrap();
