@@ -1,5 +1,5 @@
 [package]
-name = "ssh"
+name = "template-web-ssh"
 version = "0.1.0"
 authors = ["fgsoap <fgsoap@gmail.com>"]
 edition = "2018"

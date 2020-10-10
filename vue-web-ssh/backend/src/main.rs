@@ -1,7 +1,6 @@
+use ::ssh;
 use actix_cors::Cors;
 use actix_web::{http::header, middleware::Logger, web, App, HttpServer};
-
-mod ssh;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {

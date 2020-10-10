@@ -1,7 +1,7 @@
 [package]
-name = "actix-web-cors"
+name = "backend"
 version = "1.0.0"
-authors = ["krircc <krircc@aliyun.com>"]
+authors = ["fgsoap <fgsoap@gmail.com>"]
 edition = "2018"
 
 [dependencies]
