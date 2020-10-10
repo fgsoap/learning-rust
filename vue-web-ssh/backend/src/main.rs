@@ -20,7 +20,7 @@ async fn main() -> std::io::Result<()> {
                     .finish(),
             )
             .wrap(Logger::default())
-            .service(web::resource("/template-web-ssh").route(web::post().to(ssh::exec)))
+            .service(web::resource("/ssh").route(web::post().to(ssh::exec)))
     })
     .bind("127.0.0.1:8000")?
     .run()
