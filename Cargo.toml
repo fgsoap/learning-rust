@@ -5,10 +5,11 @@ members = [
     "variables",
     "branches",
     "loops",
-    "ssh",
+    "template-web-ssh",
     "ownership",
     "first_word",
     "slice",
     "test_struct",
-    "rectangles"
+    "rectangles",
+    "vue-web-ssh"
 ]

@@ -57,7 +57,7 @@ async fn index(query: web::Query<HashMap<String, String>>) -> Result<HttpRespons
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    std::env::set_var("RUST_LOG", "ssh=info");
+    std::env::set_var("RUST_LOG", "template-web-ssh=info");
     env_logger::init();
     // start http server
     HttpServer::new(move || App::new().service(web::resource("/").route(web::get().to(index))))
