@@ -8,10 +8,10 @@
 
       <label>Server: </label>
       <select style="width: 10%" v-model="SSH" required>
-        <option value="10.252.218.71:22" selected="selected">
-          10.252.218.71
-        </option>
-        <option value="10.252.218.73:22">10.252.218.73</option>
+        <option value="10.xx.xx.7:22" selected="selected">A</option>
+        <option value="10.xx.xx.3:22">B</option>
+        <option value="10.xx.xx.1:22">C</option>
+        <option value="10.xx.xx.10:22">D</option>
       </select>
       <br />
 
@@ -56,17 +56,9 @@
       <button id="submit" @click="exec">Execute</button>
       <br />
 
-      <h2 class="content-subhead">Showing the Result!</h2>
     </div>
-    <div class="content-wrapper">
-      <div class="" style="display: flex">
-        <div class="code">
-          <pre
-            style="display: block; white-space: pre; margin: 1em 0"
-          ><code>{{ Result }}</code>
-        </pre>
-        </div>
-      </div>
+    <div style="display: flex">
+      <code v-html="Result" style="white-space: pre-wrap;"></code>
     </div>
   </div>
 </template>
@@ -76,7 +68,11 @@ export default {
   name: "app",
   data() {
     return {
-      Result: "",
+      SSH: "",
+      Username: "",
+      Password: "",
+      Command: "",
+      Result: ""
     };
   },
   methods: {
