@@ -8,7 +8,7 @@
 
       <label>Server: </label>
       <select style="width: 10%" v-model="SSH" required>
-        <option value="10.252.218.71:22" selected="selected">10.252.218.71</option>
+        <option value="10.xx.xx.71:22" selected="selected">10.xx.xx.71</option>
       </select>
       <br />
 
