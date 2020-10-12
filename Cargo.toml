@@ -11,5 +11,6 @@ members = [
     "slice",
     "test_struct",
     "rectangles",
-    "vue-web-ssh/backend"
+    "vue-web-ssh/backend",
+    "test_emum"
 ]
