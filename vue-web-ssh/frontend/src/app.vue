@@ -1,16 +1,5 @@
 <template>
   <div id="app">
-    <div class="vld-parent">
-      <loading
-        :active.sync="isLoading"
-        :can-cancel="true"
-        :on-cancel="onCancel"
-        :is-full-page="fullPage"
-      ></loading>
-
-      <label><input type="checkbox" v-model="fullPage" />Full page?</label>
-      <button @click.prevent="doAjax">fetch Data</button>
-    </div>
     <div style="text-align: center">
       <div id="title">
         <a to="#">Welcome to Web SSH</a>
@@ -19,21 +8,10 @@
 
       <label>Server: </label>
       <select style="width: 10%" v-model="SSH" required>
-        <option value="10.xx.xx.71:22" selected="selected">10.xx.xx.71 </option>
-        <option value="10.xx.xx.3:22">B</option>
-        <option value="10.xx.xx.1:22">C</option>
-        <option value="10.xx.xx.10:22">D</option>
+        <option value="10.252.218.71:22" selected="selected">10.252.218.71</option>
       </select>
       <br />
 
-      <!-- <input
-        style="width: 10%"
-        type="text"
-        name="ssh"
-        placeholder="SSH"
-        v-model="SSH"
-        required
-      /> -->
       <input
         style="width: 10%"
         type="text"
@@ -64,9 +42,18 @@
       </div>
       <br />
 
-      <button id="submit" @click="exec">Execute</button>&nbsp;
-      <button id="submit" @click="cleanup">Cleanup</button>
+      <div class="vld-parent">
+        <loading
+          :active.sync="isLoading"
+          :can-cancel="true"
+          :on-cancel="onCancel"
+          :is-full-page="fullPage"
+        ></loading>
+        <button id="submit" @click="exec" @click.prevent="exec">Execute</button>&nbsp;
+        <button id="submit" @click="cleanup">Cleanup</button>
+      </div>
       <br />
+
     </div>
     <div style="display: flex">
       <code style="white-space: pre-wrap;">
@@ -99,17 +86,11 @@ export default {
     Loading,
   },
   methods: {
-    doAjax() {
-      this.isLoading = true;
-      // simulate AJAX
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 5000);
-    },
     onCancel() {
       console.log("User cancelled the loader.");
     },
     exec() {
+      this.isLoading = true;
       let ssh_uri = this.SSH;
       let username = this.Username;
       let password = this.Password;
@@ -132,6 +113,7 @@ export default {
         .then((json) => {
           console.log(json);
           this.Result = json.result;
+          this.isLoading = false;
         })
         .catch((e) => {
           console.log(e);
