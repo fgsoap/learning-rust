@@ -48,6 +48,8 @@
           :can-cancel="true"
           :on-cancel="onCancel"
           :is-full-page="fullPage"
+          :color="color"
+          :loader="loader"
         ></loading>
         <button id="submit" @click="exec" @click.prevent="exec">Execute</button>&nbsp;
         <button id="submit" @click="cleanup">Cleanup</button>
@@ -80,6 +82,8 @@ export default {
       queries: ["ERROR", "WARNING"],
       isLoading: false,
       fullPage: true,
+      loader: 'spinner',
+      color: '#007bff',
     };
   },
   components: {
