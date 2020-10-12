@@ -1,5 +1,16 @@
 <template>
   <div id="app">
+    <div class="vld-parent">
+      <loading
+        :active.sync="isLoading"
+        :can-cancel="true"
+        :on-cancel="onCancel"
+        :is-full-page="fullPage"
+      ></loading>
+
+      <label><input type="checkbox" v-model="fullPage" />Full page?</label>
+      <button @click.prevent="doAjax">fetch Data</button>
+    </div>
     <div style="text-align: center">
       <div id="title">
         <a to="#">Welcome to Web SSH</a>
@@ -56,7 +67,6 @@
       <button id="submit" @click="exec">Execute</button>&nbsp;
       <button id="submit" @click="cleanup">Cleanup</button>
       <br />
-
     </div>
     <div style="display: flex">
       <code style="white-space: pre-wrap;">
@@ -67,6 +77,10 @@
 </template>
 
 <script>
+// Import component
+import Loading from "vue-loading-overlay";
+// Import stylesheet
+import "vue-loading-overlay/dist/vue-loading.css";
 export default {
   name: "app",
   data() {
@@ -76,10 +90,25 @@ export default {
       Password: "",
       Command: "",
       Result: "",
-      queries: ['ERROR', 'WARNING']
+      queries: ["ERROR", "WARNING"],
+      isLoading: false,
+      fullPage: true,
     };
   },
+  components: {
+    Loading,
+  },
   methods: {
+    doAjax() {
+      this.isLoading = true;
+      // simulate AJAX
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 5000);
+    },
+    onCancel() {
+      console.log("User cancelled the loader.");
+    },
     exec() {
       let ssh_uri = this.SSH;
       let username = this.Username;
