@@ -52,16 +52,14 @@
           :loader="loader"
         ></loading>
         <button id="submit" @click="exec" @click.prevent="exec">Execute</button>&nbsp;
-        <button id="submit" @click="cleanup">Cleanup</button>
+        <button id="submit" @click="cleanup" @click.prevent="cleanup">Cleanup</button>
       </div>
       <br />
 
     </div>
-    <div style="display: flex">
-      <code style="white-space: pre-wrap;">
-        <text-highlight :queries="queries">{{ Result }}</text-highlight>
-      </code>
-    </div>
+    <code style="white-space: pre-wrap;">
+      <text-highlight :queries="queries">{{ Result }}</text-highlight>
+    </code>
   </div>
 </template>
 
@@ -124,7 +122,11 @@ export default {
         });
     },
     cleanup() {
+      this.isLoading = true;
       this.Result = "";
+      setTimeout(() => {
+        this.isLoading = false
+      }, 250);
     },
   },
 };
