@@ -12,6 +12,37 @@ enum Message<'t> {
     ChangeColor(i32, i32, i32),
 }
 
+impl Message<'_> {
+    fn call(&self) {
+        println!("{:?}", &self)
+    }
+}
+
+#[derive(Debug)]
+enum UsState {
+    Alabama,
+    Alaska,
+}
+
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(UsState),
+}
+
+fn value_in_cents(coin: Coin) -> u32 {
+    match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("State quarter from {:?}", state);
+            25
+        }
+    }
+}
+
 fn main() {
     let four = IpAddrKind::V4(127, 0, 0, 1);
     let six = IpAddrKind::V6(String::from("::1"));
@@ -28,10 +59,15 @@ fn main() {
     m.call();
     let c = Message::ChangeColor(23, 34, 56);
     c.call();
-}
 
-impl Message<'_> {
-    fn call(&self) {
-        println!("{:?}", &self)
-    }
+    // test Option
+    let some_number = Some(5);
+    let some_string = Some("a string");
+
+    let absent_number: Option<i32> = None;
+    println!("{:?}, {:?}, {:?}", some_number, some_string, absent_number);
+
+    // test match
+    let my_coin = Coin::Quarter(UsState::Alabama);
+    println!("{}", value_in_cents(my_coin));
 }
