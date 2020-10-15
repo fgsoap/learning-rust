@@ -49,11 +49,9 @@
           :color="color"
           :loader="loader"
         ></loading>
-        <button id="submit" @click="exec" @click.prevent="exec">Execute</button
+        <button id="submit" @click="exec">Execute</button
         >&nbsp;
-        <button id="submit" @click="cleanup" @click.prevent="cleanup">
-          Cleanup
-        </button>
+        <button id="submit" @click="cleanup">Cleanup</button>
       </div>
     </div>
     <code style="white-space: pre-wrap;">
