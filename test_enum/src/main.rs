@@ -81,4 +81,12 @@ fn main() {
     let six = plus_one(five);
     let none = plus_one(None);
     println!("six is {:?}, none is {:?}", six, none);
+
+    // test match ignore
+    let some_u8_value = 0u8;
+    match some_u8_value {
+        1 => println!("one"),
+        3 => println!("three"),
+        _ => (),
+    }
 }
