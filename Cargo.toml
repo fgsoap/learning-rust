@@ -12,5 +12,6 @@ members = [
     "test_struct",
     "rectangles",
     "vue-web-ssh/backend",
-    "test_enum"
+    "test_enum",
+    "restaurant"
 ]
