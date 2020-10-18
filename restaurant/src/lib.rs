@@ -1,3 +1,5 @@
+use crate::front_of_house::hosting;
+
 mod front_of_house {
     pub mod hosting {
         pub fn add_to_waitlist() {}
@@ -15,8 +17,8 @@ mod front_of_house {
 }
 
 pub fn eat_at_restaurant() {
-    crate::front_of_house::hosting::add_to_waitlist();
-    front_of_house::hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
+    hosting::add_to_waitlist();
 }
 
 fn serve_order() {}
