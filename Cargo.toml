@@ -14,5 +14,6 @@ members = [
     "vue-web-ssh/backend",
     "test_enum",
     "restaurant",
-    "back_of_house"
+    "back_of_house",
+    "test_reqwest"
 ]
