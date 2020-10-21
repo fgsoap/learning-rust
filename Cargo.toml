@@ -15,5 +15,6 @@ members = [
     "test_enum",
     "restaurant",
     "back_of_house",
-    "test_reqwest"
+    "test_reqwest",
+    "test_as"
 ]
