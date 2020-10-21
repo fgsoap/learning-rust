@@ -21,12 +21,16 @@ impl Message<'_> {
 #[derive(Debug)]
 enum UsState {
     Alabama,
+    #[allow(dead_code)]
     Alaska,
 }
 
 enum Coin {
+    #[allow(dead_code)]
     Penny,
+    #[allow(dead_code)]
     Nickel,
+    #[allow(dead_code)]
     Dime,
     Quarter(UsState),
 }
