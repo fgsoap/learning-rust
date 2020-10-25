@@ -1,9 +1,4 @@
-pub mod hosting {
-    pub fn add_to_waitlist() {}
-
-    #[allow(dead_code)]
-    fn seat_at_table() {}
-}
+pub mod hosting;
 
 mod serving {
     #[allow(dead_code)]
