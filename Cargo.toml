@@ -16,5 +16,6 @@ members = [
     "restaurant",
     "back_of_house",
     "test_reqwest",
-    "test_as"
+    "test_as",
+    "test_vec"
 ]
