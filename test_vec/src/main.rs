@@ -25,6 +25,7 @@ fn main() {
         let mut v = vec![1,2,3,4,5];
         v.push(6);
         let first = &v[5];
+        // if try to add 6 to vec v, the physical address may be changed, so the below method of v will fail
         // v.push(6);
         println!("This first element is: {}.", first);
     }
