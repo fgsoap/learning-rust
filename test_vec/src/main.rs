@@ -16,5 +16,16 @@ fn main() {
             Some(third)=>println!("The third element is {}", third),
             None=>println!("There is no third element."),
         }
+        // let does_not_exist = &v[100];
+        let does_not_exist = v.get(100);
+        println!("{:?}", does_not_exist);
+    }
+
+    {
+        let mut v = vec![1,2,3,4,5];
+        v.push(6);
+        let first = &v[5];
+        // v.push(6);
+        println!("This first element is: {}.", first);
     }
 }
