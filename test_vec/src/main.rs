@@ -29,4 +29,13 @@ fn main() {
         // v.push(6);
         println!("This first element is: {}.", first);
     }
+
+    // loop vec
+    {
+        let v = vec![100,32,57];
+        for i in &v {
+            println!("{}",i);
+        }
+    }
+    
 }
