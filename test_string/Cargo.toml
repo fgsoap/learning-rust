@@ -1,5 +1,5 @@
 [package]
-name = "test_vec"
+name = "test_string"
 version = "0.1.0"
 authors = ["fgsoap <fgsoap@gmail.com>"]
 edition = "2018"
