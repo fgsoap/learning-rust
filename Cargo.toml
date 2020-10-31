@@ -17,5 +17,6 @@ members = [
     "back_of_house",
     "test_reqwest",
     "test_as",
-    "test_vec"
+    "test_vec",
+    "test_string"
 ]
