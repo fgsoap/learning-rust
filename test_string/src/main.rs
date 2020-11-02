@@ -35,4 +35,9 @@ fn main() {
     let s3 = String::from("toe");
     let s = format!("{}-{}-{}", s1, s2, s3);
     println!("after s is: {}", s);
+
+    // try slice if String
+    let hello = "你好";
+    let s = &hello[0..6];
+    println!("{}", s);
 }
