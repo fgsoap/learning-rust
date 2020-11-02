@@ -40,4 +40,12 @@ fn main() {
     let hello = "你好";
     let s = &hello[0..6];
     println!("{}", s);
+
+    // try loop
+    for c in hello.chars() {
+        println!("{}", c);
+    }
+    for c in hello.bytes() {
+        println!("{}", c);
+    }
 }
