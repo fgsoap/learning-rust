@@ -18,5 +18,6 @@ members = [
     "test_reqwest",
     "test_as",
     "test_vec",
-    "test_string"
+    "test_string",
+    "test_hashmap"
 ]
