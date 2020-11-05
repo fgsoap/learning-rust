@@ -18,8 +18,10 @@ fn main() {
     let field_value = String::from("Blue");
 
     let mut map = HashMap::new();
-    map.insert(field_name, field_value);
+    map.insert(&field_name, &field_value);
     // from here, try to use field_name&field_value will have a compile failure
+    // but here try references will be OK
+    println!("{}-{}", field_name, field_value);
     let another_field_name = 34;
     let another_field_value = String::from("Pink");
     let mut another_map = HashMap::new();
