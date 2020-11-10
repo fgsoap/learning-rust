@@ -38,4 +38,15 @@ fn main() {
     for (key, value) in &scores {
         println!("{}: {}", key, value)
     }
+
+    // test to overwrite old value of the key
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Blue"), 25);
+    println!("{:?}", scores);
+
+    // test entry API to check existing key
+    scores.entry(String::from("Yellow")).or_insert(10);
+    scores.entry(String::from("Blue")).or_insert(50);
+    println!("{:?}", scores);
 }
