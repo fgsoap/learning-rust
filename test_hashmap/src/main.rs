@@ -11,7 +11,7 @@ fn main() {
     let teams = vec![String::from("Blue"), String::from("Yellow")];
     let initial_scores = vec![10, 50];
 
-    let scores: HashMap<_,_> = teams.iter().zip(initial_scores.iter()).collect();
+    let scores: HashMap<_, _> = teams.iter().zip(initial_scores.iter()).collect();
     println!("{:?}", scores);
 
     let field_name = String::from("Favorite color");
@@ -29,4 +29,13 @@ fn main() {
     // another_field_name is fine as it implements Copy trait
     println!("{:?}", another_field_name);
 
+    // try get wit result of Option
+    let team_name = String::from("Blue");
+    let score = scores.get(&team_name);
+    println!("{:?}", score);
+
+    // for loop
+    for (key, value) in &scores {
+        println!("{}: {}", key, value)
+    }
 }
