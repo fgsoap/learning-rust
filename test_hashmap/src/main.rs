@@ -55,6 +55,7 @@ fn main() {
     let mut map = HashMap::new();
     for word in text.split_whitespace() {
         let count = map.entry(word).or_insert(0);
+        // count is kind of &mut V
         *count += 1;
     }
     println!("{:?}", map);
