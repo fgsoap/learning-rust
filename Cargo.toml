@@ -19,5 +19,6 @@ members = [
     "test_as",
     "test_vec",
     "test_string",
-    "test_hashmap"
+    "test_hashmap",
+    "test_panic"
 ]
