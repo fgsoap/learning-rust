@@ -19,8 +19,9 @@ fn read_username_from_file() -> Result<String, io::Error> {
     //     Err(e) => Err(e),
     // }
 
+    let mut f = File::open("hello.txt")?;
     let mut s = String::new();
-    File::open("hello.txt")?.read_to_string(&mut s)?;
+    f.read_to_string(&mut s)?;
     Ok(s)
 }
 
