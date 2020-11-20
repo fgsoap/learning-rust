@@ -2,6 +2,7 @@
 use std::io;
 // use std::io::ErrorKind;
 // use std::io::Read;
+use std::error::Error;
 use std::fs;
 
 fn read_username_from_file() -> Result<String, io::Error> {
@@ -27,7 +28,7 @@ fn read_username_from_file() -> Result<String, io::Error> {
     fs::read_to_string("hello.txt")
 }
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     // let v = vec![1, 2, 3];
     // v[99];
     // println!("Hello, world!");
@@ -46,6 +47,7 @@ fn main() {
     //     },
     // };
 
-    let f = read_username_from_file();
+    let f = read_username_from_file()?;
     println!("{:?}", f);
+    Ok(())
 }
