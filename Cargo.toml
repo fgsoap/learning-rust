@@ -21,5 +21,6 @@ members = [
     "test_string",
     "test_hashmap",
     "test_panic",
-    "test_generics"
+    "test_generics",
+    "test_trait"
 ]
