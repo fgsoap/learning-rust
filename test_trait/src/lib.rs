@@ -22,12 +22,6 @@ pub struct Tweet {
     pub retweet: bool,
 }
 
-impl Tweet {
-    pub fn summarized(&self) -> String {
-        self.summarize()
-    }
-}
-
 impl Summary for Tweet {
     fn summarize(&self) -> String {
         format!("{}: {}", self.username, self.content)

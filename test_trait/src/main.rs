@@ -1,3 +1,4 @@
+use test_trait::Summary;
 use test_trait::Tweet;
 
 fn main() {
@@ -7,5 +8,5 @@ fn main() {
         reply: false,
         retweet: false,
     };
-    println!("1 new tweet: {}", tweet.summarized());
+    println!("1 new tweet: {}", tweet.summarize());
 }
