@@ -1,3 +1,4 @@
+use test_trait::notify;
 use test_trait::Summary;
 use test_trait::Tweet;
 
@@ -13,4 +14,6 @@ fn main() {
         tweet.summarize(),
         tweet.summarize_author()
     );
+
+    notify(tweet);
 }
