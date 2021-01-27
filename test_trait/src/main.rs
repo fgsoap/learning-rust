@@ -8,5 +8,9 @@ fn main() {
         reply: false,
         retweet: false,
     };
-    println!("1 new tweet: {}", tweet.summarize());
+    println!(
+        "1 new tweet: {}, author is: {}",
+        tweet.summarize(),
+        tweet.summarize_author()
+    );
 }
