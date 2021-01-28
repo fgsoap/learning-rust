@@ -1,3 +1,5 @@
+use std::fmt::{self, Display};
+
 pub trait Summary {
     fn summarize_author(&self) -> String {
         String::from("(Read more about author...)")
@@ -39,17 +41,27 @@ impl Summary for Tweet {
     // }
 }
 
-pub fn notify(item: impl Summary) {
-    println!("Breaking news! {:?}", item.summarize());
+impl Display for Tweet {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "{} + {} + {} + {}",
+            self.username, self.content, self.reply, self.retweet
+        )
+    }
 }
 
-pub fn notify1<T: Summary>(item: T) {
-    println!("Breaking news! {:?}", item.summarize());
+pub fn notify(item: impl Summary + Display) {
+    println!("Breaking news! notify: {}", item);
+}
+
+pub fn notify1<T: Summary + Display>(item: T) {
+    println!("Breaking news! notify1: {}", item);
 }
 
 pub fn notify2(item1: impl Summary, item2: impl Summary) {
     println!(
-        "Breaking news! {:?} + {:?}",
+        "Breaking news! notify2: {:?} + {:?}",
         item1.summarize(),
         item2.summarize()
     );
@@ -57,7 +69,7 @@ pub fn notify2(item1: impl Summary, item2: impl Summary) {
 
 pub fn notify3<T: Summary>(item1: T, item2: T) {
     println!(
-        "Breaking news! {:?} + {:?}",
+        "Breaking news! notify3: {:?} + {:?}",
         item1.summarize(),
         item2.summarize()
     );
