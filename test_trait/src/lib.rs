@@ -74,3 +74,11 @@ pub fn notify3<T: Summary>(item1: T, item2: T) {
         item2.summarize()
     );
 }
+
+pub fn notify4<T, U>(t: T, u: U)
+where
+    T: Display + Summary,
+    U: Clone + Summary,
+{
+    println!("Notify4... {} | {}", t.summarize(), u.summarize());
+}

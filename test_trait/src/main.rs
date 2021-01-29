@@ -2,6 +2,7 @@ use test_trait::notify;
 use test_trait::notify1;
 use test_trait::notify2;
 use test_trait::notify3;
+use test_trait::notify4;
 use test_trait::NewsArticle;
 use test_trait::Summary;
 use test_trait::Tweet;
@@ -27,5 +28,6 @@ fn main() {
     notify(tweet.clone());
     notify1(tweet.clone());
     notify2(tweet.clone(), newsarticle.clone());
-    notify3(newsarticle.clone(), newsarticle.clone())
+    notify3(newsarticle.clone(), newsarticle.clone());
+    notify4(tweet.clone(), newsarticle.clone())
 }
