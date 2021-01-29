@@ -29,5 +29,16 @@ fn main() {
     notify1(tweet.clone());
     notify2(tweet.clone(), newsarticle.clone());
     notify3(newsarticle.clone(), newsarticle.clone());
-    notify4(tweet.clone(), newsarticle.clone())
+    notify4(tweet.clone(), newsarticle.clone());
+    let author: String = return_summarizable().summarize_author();
+    println!("{:#?}", author);
+}
+
+fn return_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from("of coursr, as you probably already know, people"),
+        reply: false,
+        retweet: false,
+    }
 }
