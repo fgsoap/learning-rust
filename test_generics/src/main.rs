@@ -3,6 +3,11 @@ fn main() {
     let p2 = Point { x: "Hello", y: "c" };
     let p3 = p1.mixup(p2);
     println!("p3.x={},p3.y={}", p3.x, p3.y);
+
+    let number_list = vec![34, 50, 25, 100, 65];
+    let result = largest(&number_list);
+    println!("The largest number is {}", result);
+    println!("number_list is {:?}", number_list);
 }
 
 struct Point<T, U> {
@@ -17,4 +22,16 @@ impl<T, U> Point<T, U> {
             y: other.y,
         }
     }
+}
+
+fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+    let mut largest = list[0];
+
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
+
+    largest
 }
