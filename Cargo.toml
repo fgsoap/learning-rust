@@ -22,5 +22,6 @@ members = [
     "test_hashmap",
     "test_panic",
     "test_generics",
-    "test_trait"
+    "test_trait",
+    "longest_string"
 ]
