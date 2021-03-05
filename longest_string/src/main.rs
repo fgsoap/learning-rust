@@ -1,8 +1,9 @@
 fn main() {
     let s1 = String::from("Hello");
+    let result;
     {
-        let s2 = "World";
-        let result = longest(s1.as_str(), s2);
+        let s2 = String::from("World");
+        result = longest(s1.as_str(), s2.as_str());
         println!("{}", result);
     }
 }
