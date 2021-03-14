@@ -23,5 +23,6 @@ members = [
     "test_panic",
     "test_generics",
     "test_trait",
-    "longest_string"
+    "longest_string",
+    "test_lifecycle_of_struct"
 ]
