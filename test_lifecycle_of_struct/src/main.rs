@@ -4,10 +4,23 @@ fn main() {
     let i = ImportantExcerpt {
         part: first_sentence,
     };
-    println!("{:?}", i);
+    println!(
+        "{:?}, {}",
+        i.level(),
+        i.announce_and_return_part(first_sentence)
+    );
 }
-
 #[derive(Debug)]
 struct ImportantExcerpt<'a> {
     part: &'a str,
+}
+
+impl<'a> ImportantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
+    }
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        self.part
+    }
 }
