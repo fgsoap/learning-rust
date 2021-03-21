@@ -24,5 +24,6 @@ members = [
     "test_generics",
     "test_trait",
     "longest_string",
-    "test_lifecycle_of_struct"
+    "test_lifecycle_of_struct",
+    "adder"
 ]
