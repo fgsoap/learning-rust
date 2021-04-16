@@ -17,7 +17,7 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     }
 }
 
-#[warn(dead_code)]
+#[allow(dead_code)]
 fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
 where
     T: Display,
