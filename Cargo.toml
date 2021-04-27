@@ -26,5 +26,6 @@ members = [
     "longest_string",
     "test_lifecycle_of_struct",
     "adder",
-    "minigrep"
+    "minigrep",
+    "test_closure"
 ]
