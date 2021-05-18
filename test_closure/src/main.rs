@@ -64,6 +64,7 @@ mod tests {
         let _v1 = c.value(1);
         let v2 = c.value(2);
 
-        assert_eq!(v2, 2)
+        assert_eq!(_v1, 1);
+        assert_ne!(v2, 2);
     }
 }
