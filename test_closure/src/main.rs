@@ -66,5 +66,10 @@ mod tests {
 
         assert_eq!(_v1, 1);
         assert_ne!(v2, 2);
+
+        let x = vec![1, 2, 3];
+        let tk = move |z| z == x;
+        // println!("{:?}", x);
+        tk(vec![1, 2, 3]);
     }
 }
