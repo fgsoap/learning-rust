@@ -27,5 +27,6 @@ members = [
     "test_lifecycle_of_struct",
     "adder",
     "minigrep",
-    "test_closure"
+    "test_closure",
+    "test_iter"
 ]
