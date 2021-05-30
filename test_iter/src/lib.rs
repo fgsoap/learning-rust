@@ -15,6 +15,18 @@ fn iterator_demonstration() {
     // let mut v3_iter = v1.iter_mut();
 }
 
+#[test]
+fn iterator_sum() {
+    let v1 = vec![1, 2, 3];
+    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
+    assert_eq!(v2, vec![2, 3, 4]);
+
+    let v1_iter = v1.iter();
+    let total: i32 = v1_iter.sum();
+
+    assert_eq!(total, 6);
+}
+
 #[derive(PartialEq, Debug)]
 struct Shoe {
     size: u32,
@@ -60,14 +72,31 @@ fn filters_by_size() {
     )
 }
 
+struct Counter {
+    count: u32,
+}
+impl Counter {
+    #[allow(dead_code)]
+    fn new() -> Counter {
+        Counter { count: 0 }
+    }
+}
+impl Iterator for Counter {
+    type Item = u32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.count += 1;
+
+        if self.count < 6 {
+            Some(self.count)
+        } else {
+            None
+        }
+    }
+}
 #[test]
-fn iterator_sum() {
-    let v1 = vec![1, 2, 3];
-    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
-    assert_eq!(v2, vec![2, 3, 4]);
+fn calling_next_directly() {
+    let mut counter = Counter::new();
 
-    let v1_iter = v1.iter();
-    let total: i32 = v1_iter.sum();
-
-    assert_eq!(total, 6);
+    assert_eq!(counter.next(), Some(1));
 }
