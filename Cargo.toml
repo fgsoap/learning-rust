@@ -30,3 +30,9 @@ members = [
     "test_closure",
     "test_iter"
 ]
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
