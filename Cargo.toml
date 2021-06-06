@@ -28,7 +28,8 @@ members = [
     "adder",
     "minigrep",
     "test_closure",
-    "test_iter"
+    "test_iter",
+    "my_crate"
 ]
 
 [profile.dev]
