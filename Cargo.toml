@@ -38,7 +38,3 @@ opt-level = 0
 
 [profile.release]
 opt-level = 3
-
-[package]
-name = "learning-rust"
-license = "MIT"
