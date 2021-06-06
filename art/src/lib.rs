@@ -1,6 +1,10 @@
 //! # Art
 //!
-//! a libarary for art model
+//! A libarary for modeling artistic concepts.
+
+pub use self::kinds::PrimaryColor;
+pub use self::kinds::SecondaryColor;
+pub use self::utils::mix;
 
 pub mod kinds {
     /// RYB original
