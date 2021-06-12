@@ -30,7 +30,8 @@ members = [
     "test_closure",
     "test_iter",
     "my_crate",
-    "art"
+    "art",
+    "add-one"
 ]
 
 [profile.dev]
