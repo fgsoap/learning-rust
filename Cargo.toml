@@ -31,7 +31,8 @@ members = [
     "test_iter",
     "my_crate",
     "art",
-    "add-one"
+    "add-one",
+    "test_box"
 ]
 
 [profile.dev]
