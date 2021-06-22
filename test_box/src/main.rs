@@ -12,6 +12,9 @@ fn main() {
 
     assert_eq!(5, x);
     assert_eq!(5, *y);
+
+    let m = MyBox(String::from("Rust"));
+    hello(&m);
 }
 
 #[derive(Debug)]
@@ -41,4 +44,8 @@ impl<T> Deref for MyBox<T> {
     fn deref(&self) -> &T {
         &self.0
     }
+}
+
+fn hello(name: &str) {
+    println!("Hello, {}!", name);
 }
