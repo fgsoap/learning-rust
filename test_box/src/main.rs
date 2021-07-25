@@ -1,5 +1,6 @@
 use crate::List::{Cons, Nil};
 use std::ops::Deref;
+use std::ops::DerefMut;
 fn main() {
     let b = Box::new(5);
     println!("b = {}", b);
@@ -15,6 +16,11 @@ fn main() {
 
     let m = MyBox(String::from("Rust"));
     hello(&m);
+    let new_string = "My String Rust";
+    hello(new_string);
+
+    let mut n = MyBox::new(String::from("Mut Rust"));
+    mut_hello(&mut n);
 }
 
 #[derive(Debug)]
@@ -46,6 +52,16 @@ impl<T> Deref for MyBox<T> {
     }
 }
 
+impl<T> DerefMut for MyBox<T> {
+    fn deref_mut(&mut self) -> &mut T {
+        &mut self.0
+    }
+}
+
 fn hello(name: &str) {
     println!("Hello, {}!", name);
+}
+
+fn mut_hello(name: &mut str) {
+    println!("Hello mut, {}!", name);
 }
