@@ -21,6 +21,14 @@ fn main() {
 
     let mut n = MyBox::new(String::from("Mut Rust"));
     mut_hello(&mut n);
+
+    let c = CustomSmartPointer {
+        data: String::from("my stuff"),
+    };
+    let d = CustomSmartPointer {
+        data: String::from("other stuff"),
+    };
+    println!("CustomSmartPointers created.");
 }
 
 #[derive(Debug)]
@@ -64,4 +72,14 @@ fn hello(name: &str) {
 
 fn mut_hello(name: &mut str) {
     println!("Hello mut, {}!", name);
+}
+
+struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self) {
+        println!("Droping CustomSmartPointer with data `{}`!", self.data);
+    }
 }
