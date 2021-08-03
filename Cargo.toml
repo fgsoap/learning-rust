@@ -33,7 +33,8 @@ members = [
     "art",
     "add-one",
     "test_box",
-    "test_rc"
+    "test_rc",
+    "test_refcell"
 ]
 
 [profile.dev]
