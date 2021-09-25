@@ -34,7 +34,8 @@ members = [
     "add-one",
     "test_box",
     "test_rc",
-    "test_refcell"
+    "test_refcell",
+    "front_of_house"
 ]
 
 [profile.dev]
