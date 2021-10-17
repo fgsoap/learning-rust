@@ -43,10 +43,15 @@ fn main() {
     println!("{}", s);
 
     // try loop
+    println!("loop char starts: ======");
     for c in hello.chars() {
         println!("{}", c);
     }
+    println!("loop chat ends: ======");
+
+    println!("loop byte starts: ======");
     for c in hello.bytes() {
         println!("{}", c);
     }
+    println!("loop byte ends: ======");
 }
