@@ -35,7 +35,8 @@ members = [
     "test_box",
     "test_rc",
     "test_refcell",
-    "front_of_house"
+    "front_of_house",
+    "hello-wasm"
 ]
 
 [profile.dev]
