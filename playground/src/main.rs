@@ -36,8 +36,12 @@ fn main() {
     // assert_eq!(closure_math(|| a + b), 5);
     // assert_eq!(closure_math(|| a * b), 6);
 
-    let result = two_times_impl();
-    assert_eq!(result(2), 4);
+    // let result = two_times_impl();
+    // assert_eq!(result(2), 4);
+
+    let n = 13;
+    let big_n = if n < 10 && n > -10 { 10 * n } else { n / 2 };
+    assert_eq!(big_n, 6);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
@@ -68,7 +72,7 @@ fn main() {
 //     op()
 // }
 
-fn two_times_impl() -> impl Fn(i32) -> i32 {
-    let i = 2;
-    move |j| j * i
-}
+// fn two_times_impl() -> impl Fn(i32) -> i32 {
+//     let i = 2;
+//     move |j| j * i
+// }
