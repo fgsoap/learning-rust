@@ -43,8 +43,17 @@ fn main() {
     // let big_n = if n < 10 && n > -10 { 10 * n } else { n / 2 };
     // assert_eq!(big_n, 6);
 
-    let y = while_true(5);
-    assert_eq!(y, 6);
+    // let y = while_true(5);
+    // assert_eq!(y, 6);
+
+    let number = 42;
+    match number {
+        0 => println!("zero"),
+        1 | 2 => println!("one or two"),
+        3..=5 => println!("three through five"),
+        n @ 42 => println!("the answer is {}", n),
+        _ => println!("other"),
+    }
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
@@ -80,9 +89,9 @@ fn main() {
 //     move |j| j * i
 // }
 
-fn while_true(x: i32) -> i32 {
-    while true {
-        return x + 1;
-    }
-    x
-}
+// fn while_true(x: i32) -> i32 {
+//     while true {
+//         return x + 1;
+//     }
+//     x
+// }
