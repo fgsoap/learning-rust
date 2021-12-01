@@ -55,12 +55,20 @@ fn main() {
     //     _ => println!("other"),
     // }
 
-    let boolean = true;
-    let mut binary = 0;
-    if let true = boolean {
-        binary = 1;
+    // let boolean = true;
+    // let mut binary = 0;
+    // if let true = boolean {
+    //     binary = 1;
+    // }
+    // assert_eq!(binary, 1);
+
+    let mut v = vec![1, 2, 3, 4, 5];
+    loop {
+        match v.pop() {
+            Some(x) => println!("{}", x),
+            None => break,
+        }
     }
-    assert_eq!(binary, 1);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
