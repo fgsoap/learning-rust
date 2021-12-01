@@ -46,14 +46,21 @@ fn main() {
     // let y = while_true(5);
     // assert_eq!(y, 6);
 
-    let number = 42;
-    match number {
-        0 => println!("zero"),
-        1 | 2 => println!("one or two"),
-        3..=5 => println!("three through five"),
-        n @ 42 => println!("the answer is {}", n),
-        _ => println!("other"),
+    // let number = 42;
+    // match number {
+    //     0 => println!("zero"),
+    //     1 | 2 => println!("one or two"),
+    //     3..=5 => println!("three through five"),
+    //     n @ 42 => println!("the answer is {}", n),
+    //     _ => println!("other"),
+    // }
+
+    let boolean = true;
+    let mut binary = 0;
+    if let true = boolean {
+        binary = 1;
     }
+    assert_eq!(binary, 1);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
