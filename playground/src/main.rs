@@ -75,14 +75,22 @@ fn main() {
     //     println!("{}", x);
     // }
 
-    let _num = 42u32;
-    let _num = 0x2A;
-    let _num = 0o106;
-    let _num = 0b1101_1011;
-    assert_eq!(b'*', 42_u8); //字节字面量存储为u8, 字节字面量的表示方式为b'X', 其中X为单个ASCII字符
-    assert_eq!(b'\'', 39u8);
-    assert_eq!(2., 2.0f64);
-    assert_eq!(2e4, 20000f64);
+    // let _num = 42u32;
+    // let _num = 0x2A;
+    // let _num = 0o106;
+    // let _num = 0b1101_1011;
+    // assert_eq!(b'*', 42_u8); //字节字面量存储为u8, 字节字面量的表示方式为b'X', 其中X为单个ASCII字符
+    // assert_eq!(b'\'', 39u8);
+    // assert_eq!(2., 2.0f64);
+    // assert_eq!(2e4, 20000f64);
+
+    // Unicode & ASCII values
+    let _x = 'r';
+    println!("{}", '\'');
+    assert_eq!('\x2A', '*'); //ASCII码16进制数
+    assert_eq!('\x25', '%');
+    assert_eq!('\u{2A}', '*'); //Unicode码16进制数
+    assert_eq!('%' as i8, 37); //char转换为i8
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
