@@ -84,13 +84,21 @@ fn main() {
     // assert_eq!(2., 2.0f64);
     // assert_eq!(2e4, 20000f64);
 
-    // Unicode & ASCII values
-    let _x = 'r';
-    println!("{}", '\'');
-    assert_eq!('\x2A', '*'); //ASCII码16进制数
-    assert_eq!('\x25', '%');
-    assert_eq!('\u{2A}', '*'); //Unicode码16进制数
-    assert_eq!('%' as i8, 37); //char转换为i8
+    // // Unicode & ASCII values
+    // let _x = 'r';
+    // println!("{}", '\'');
+    // assert_eq!('\x2A', '*'); //ASCII码16进制数
+    // assert_eq!('\x25', '%');
+    // assert_eq!('\u{2A}', '*'); //Unicode码16进制数
+    // assert_eq!('%' as i8, 37); //char转换为i8
+
+    let _arr = [1, 2, 3];
+    let mut mut_arr = [1, 2, 3];
+    assert_eq!(1, mut_arr[0]);
+    mut_arr[0] = 3;
+    let init_arr = [0; 10];
+    assert_eq!(0, init_arr[5]);
+    assert_eq!(10, init_arr.len());
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
