@@ -111,18 +111,28 @@ fn main() {
     //     println!("{}", i);
     // }
 
-    let arr: [i32; 5] = [1, 2, 3, 4, 5];
-    assert_eq!(&arr, &[1, 2, 3, 4, 5]);
-    assert_eq!(&arr[1..], &[2, 3, 4, 5]);
-    assert_eq!(&arr.len(), &5);
-    assert_eq!(&arr.is_empty(), &false);
-    assert_eq!(&arr.first(), &Some(&1));
-    assert_eq!(&arr.last(), &Some(&5));
-    let arr = &mut [1, 2, 3];
-    arr[1] = 7;
-    assert_eq!(arr, &[1, 7, 3]);
-    let vec = vec![1, 2, 3];
-    assert_eq!(&vec[..], vec![1, 2, 3]);
+    // let arr: [i32; 5] = [1, 2, 3, 4, 5];
+    // assert_eq!(&arr, &[1, 2, 3, 4, 5]);
+    // assert_eq!(&arr[1..], &[2, 3, 4, 5]);
+    // assert_eq!(&arr.len(), &5);
+    // assert_eq!(&arr.is_empty(), &false);
+    // assert_eq!(&arr.first(), &Some(&1));
+    // assert_eq!(&arr.last(), &Some(&5));
+    // let arr = &mut [1, 2, 3];
+    // arr[1] = 7;
+    // assert_eq!(arr, &[1, 7, 3]);
+    // let vec = vec![1, 2, 3];
+    // assert_eq!(&vec[..], vec![1, 2, 3]);
+
+    let truth: &'static str = "Rust is an elgent language";
+    let ptr = truth.as_ptr();
+    let len = truth.len();
+    assert_eq!(26, len);
+    let s = unsafe {
+        let slice = std::slice::from_raw_parts(ptr, len);
+        std::str::from_utf8(slice)
+    };
+    assert_eq!(s, Ok(truth));
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
