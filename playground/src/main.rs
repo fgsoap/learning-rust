@@ -92,13 +92,24 @@ fn main() {
     // assert_eq!('\u{2A}', '*'); //Unicode码16进制数
     // assert_eq!('%' as i8, 37); //char转换为i8
 
-    let _arr = [1, 2, 3];
-    let mut mut_arr = [1, 2, 3];
-    assert_eq!(1, mut_arr[0]);
-    mut_arr[0] = 3;
-    let init_arr = [0; 10];
-    assert_eq!(0, init_arr[5]);
-    assert_eq!(10, init_arr.len());
+    // let _arr = [1, 2, 3];
+    // let mut mut_arr = [1, 2, 3];
+    // assert_eq!(1, mut_arr[0]);
+    // mut_arr[0] = 3;
+    // let init_arr = [0; 10];
+    // assert_eq!(0, init_arr[5]);
+    // assert_eq!(10, init_arr.len());
+
+    assert_eq!((1..5), std::ops::Range { start: 1, end: 5 });
+    assert_eq!((1..=5), std::ops::RangeInclusive::new(1, 5));
+    assert_eq!(3 + 4 + 5, (3..6).sum());
+    assert_eq!(3 + 4 + 5 + 6, (3..=6).sum());
+    for i in 1..5 {
+        println!("{}", i);
+    }
+    for i in 1..=5 {
+        println!("{}", i);
+    }
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
