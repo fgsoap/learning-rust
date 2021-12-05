@@ -100,16 +100,29 @@ fn main() {
     // assert_eq!(0, init_arr[5]);
     // assert_eq!(10, init_arr.len());
 
-    assert_eq!((1..5), std::ops::Range { start: 1, end: 5 });
-    assert_eq!((1..=5), std::ops::RangeInclusive::new(1, 5));
-    assert_eq!(3 + 4 + 5, (3..6).sum());
-    assert_eq!(3 + 4 + 5 + 6, (3..=6).sum());
-    for i in 1..5 {
-        println!("{}", i);
-    }
-    for i in 1..=5 {
-        println!("{}", i);
-    }
+    // assert_eq!((1..5), std::ops::Range { start: 1, end: 5 });
+    // assert_eq!((1..=5), std::ops::RangeInclusive::new(1, 5));
+    // assert_eq!(3 + 4 + 5, (3..6).sum());
+    // assert_eq!(3 + 4 + 5 + 6, (3..=6).sum());
+    // for i in 1..5 {
+    //     println!("{}", i);
+    // }
+    // for i in 1..=5 {
+    //     println!("{}", i);
+    // }
+
+    let arr: [i32; 5] = [1, 2, 3, 4, 5];
+    assert_eq!(&arr, &[1, 2, 3, 4, 5]);
+    assert_eq!(&arr[1..], &[2, 3, 4, 5]);
+    assert_eq!(&arr.len(), &5);
+    assert_eq!(&arr.is_empty(), &false);
+    assert_eq!(&arr.first(), &Some(&1));
+    assert_eq!(&arr.last(), &Some(&5));
+    let arr = &mut [1, 2, 3];
+    arr[1] = 7;
+    assert_eq!(arr, &[1, 7, 3]);
+    let vec = vec![1, 2, 3];
+    assert_eq!(&vec[..], vec![1, 2, 3]);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
