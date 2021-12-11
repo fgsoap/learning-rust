@@ -124,15 +124,24 @@ fn main() {
     // let vec = vec![1, 2, 3];
     // assert_eq!(&vec[..], vec![1, 2, 3]);
 
-    let truth: &'static str = "Rust is an elgent language";
-    let ptr = truth.as_ptr();
-    let len = truth.len();
-    assert_eq!(26, len);
-    let s = unsafe {
-        let slice = std::slice::from_raw_parts(ptr, len);
-        std::str::from_utf8(slice)
-    };
-    assert_eq!(s, Ok(truth));
+    // let truth: &'static str = "Rust is an elgent language";
+    // let ptr = truth.as_ptr();
+    // let len = truth.len();
+    // assert_eq!(26, len);
+    // let s = unsafe {
+    //     let slice = std::slice::from_raw_parts(ptr, len);
+    //     std::str::from_utf8(slice)
+    // };
+    // assert_eq!(s, Ok(truth));
+
+    let mut x = 10;
+    let ptr_x = &mut x as *mut i32;
+    let y = Box::new(20);
+    let ptr_y = &*y as *const i32;
+    unsafe {
+        *ptr_x += *ptr_y;
+    }
+    assert_eq!(x, 30);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
