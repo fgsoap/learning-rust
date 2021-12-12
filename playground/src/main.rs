@@ -134,14 +134,20 @@ fn main() {
     // };
     // assert_eq!(s, Ok(truth));
 
-    let mut x = 10;
-    let ptr_x = &mut x as *mut i32;
-    let y = Box::new(20);
-    let ptr_y = &*y as *const i32;
-    unsafe {
-        *ptr_x += *ptr_y;
-    }
-    assert_eq!(x, 30);
+    // let mut x = 10;
+    // let ptr_x = &mut x as *mut i32;
+    // let y = Box::new(20);
+    // let ptr_y = &*y as *const i32;
+    // unsafe {
+    //     *ptr_x += *ptr_y;
+    // }
+    // assert_eq!(x, 30);
+
+    let num: Option<u32> = Some(42);
+    match num {
+        Some(num) => println!("{}", num),
+        None => panic!("Nothing!"),
+    };
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
@@ -182,4 +188,11 @@ fn main() {
 //         return x + 1;
 //     }
 //     x
+// }
+
+// #![feature(never_type)]
+// fn foo() -> u32 {
+//     let x: != {
+//         return 123
+//     };
 // }
