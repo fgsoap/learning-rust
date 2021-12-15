@@ -143,11 +143,17 @@ fn main() {
     // }
     // assert_eq!(x, 30);
 
-    let num: Option<u32> = Some(42);
-    match num {
-        Some(num) => println!("{}", num),
-        None => panic!("Nothing!"),
-    };
+    // let num: Option<u32> = Some(42);
+    // match num {
+    //     Some(num) => println!("{}", num),
+    //     None => panic!("Nothing!"),
+    // };
+
+    let tuple = ("hello", 4, 'c');
+    assert_eq!(tuple.0, "hello");
+    let coords = (0, 1); // it has Copy Trait
+    let result = move_coords(coords);
+    assert_eq!(result, (1, 2));
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
@@ -196,3 +202,7 @@ fn main() {
 //         return 123
 //     };
 // }
+
+fn move_coords(x: (i32, i32)) -> (i32, i32) {
+    (x.0 + 1, x.1 + 1)
+}
