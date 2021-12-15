@@ -154,6 +154,9 @@ fn main() {
     let coords = (0, 1); // it has Copy Trait
     let result = move_coords(coords);
     assert_eq!(result, (1, 2));
+    let (x, y) = move_coords(coords);
+    assert_eq!(x, 1);
+    assert_eq!(y, 2);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
