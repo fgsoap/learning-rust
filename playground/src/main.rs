@@ -149,14 +149,37 @@ fn main() {
     //     None => panic!("Nothing!"),
     // };
 
-    let tuple = ("hello", 4, 'c');
-    assert_eq!(tuple.0, "hello");
-    let coords = (0, 1); // it has Copy Trait
-    let result = move_coords(coords);
-    assert_eq!(result, (1, 2));
-    let (x, y) = move_coords(coords);
-    assert_eq!(x, 1);
-    assert_eq!(y, 2);
+    // let tuple = ("hello", 4, 'c');
+    // assert_eq!(tuple.0, "hello");
+    // let coords = (0, 1); // it has Copy Trait
+    // let result = move_coords(coords);
+    // assert_eq!(result, (1, 2));
+    // let (x, y) = move_coords(coords);
+    // assert_eq!(x, 1);
+    // assert_eq!(y, 2);
+
+    #[derive(Debug, PartialEq)]
+    struct People {
+        name: &'static str,
+        gender: u32,
+    }
+
+    impl People {
+        fn new(name: &'static str, gender: u32) -> Self {
+            return People { name, gender };
+        }
+        fn name(&self) {
+            println!("name: {:?}", self.name);
+        }
+        fn set_name(&mut self, name: &'static str) {
+            self.name = name;
+        }
+    }
+
+    let mut people = People::new("Tom", 1);
+    people.name();
+    people.set_name("Jerry");
+    people.name();
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
@@ -206,6 +229,6 @@ fn main() {
 //     };
 // }
 
-fn move_coords(x: (i32, i32)) -> (i32, i32) {
-    (x.0 + 1, x.1 + 1)
-}
+// fn move_coords(x: (i32, i32)) -> (i32, i32) {
+//     (x.0 + 1, x.1 + 1)
+// }
