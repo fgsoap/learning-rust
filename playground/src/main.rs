@@ -174,12 +174,17 @@ fn main() {
         fn set_name(&mut self, name: &'static str) {
             self.name = name;
         }
+        fn gender(&self) {
+            let gender = if self.gender == 1 { "boy" } else { "girl" };
+            println!("gender: {:?}", gender);
+        }
     }
 
     let mut people = People::new("Tom", 1);
     people.name();
     people.set_name("Jerry");
     people.name();
+    people.gender();
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
