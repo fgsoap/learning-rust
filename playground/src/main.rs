@@ -158,55 +158,106 @@ fn main() {
     // assert_eq!(x, 1);
     // assert_eq!(y, 2);
 
-    #[derive(Debug, PartialEq)] // Named-Field Struct
-    struct People {
-        name: &'static str,
-        gender: u32,
+    // #[derive(Debug, PartialEq)] // Named-Field Struct
+    // struct People {
+    //     name: &'static str,
+    //     gender: u32,
+    // }
+
+    // impl People {
+    //     fn new(name: &'static str, gender: u32) -> Self {
+    //         return People { name, gender };
+    //     }
+    //     fn name(&self) {
+    //         println!("name: {:?}", self.name);
+    //     }
+    //     fn set_name(&mut self, name: &'static str) {
+    //         self.name = name;
+    //     }
+    //     fn gender(&self) {
+    //         let gender = if self.gender == 1 { "boy" } else { "girl" };
+    //         println!("gender: {:?}", gender);
+    //     }
+    // }
+
+    // let mut people = People::new("Tom", 1);
+    // people.name();
+    // people.set_name("Jerry");
+    // people.name();
+    // people.gender();
+
+    // struct Color(i32, i32, i32); // Tuple-Like Struct
+    // let color = Color(0, 1, 2);
+    // assert_eq!(color.0, 0);
+
+    // struct Integer(u32); // Tuple-Like Struct New Type Mode
+    // let int = Integer(10);
+    // assert_eq!(int.0, 10);
+    // // type MyInteger = Integer;
+    // // let _ = MyInteger(20); // tuple-struct cannot be used as type
+
+    // type Int = i32; // Type aliase
+    // let new_int: Int = 10;
+    // assert_eq!(new_int, 10);
+
+    // struct Empty; // unit-struct
+    // let x = Empty;
+    // println!("{:p}", &x);
+    // let y = x;
+    // println!("{:p}", &y);
+    // let z = Empty;
+    // println!("{:p}", &z);
+
+    // enum Number {
+    //     Zero,
+    //     One,
+    //     Two,
+    // }
+    // let a = Number::One;
+    // // let b = Number::Two;
+    // // let c = Number::Zero;
+    // match a {
+    //     Number::Zero => println!("0"),
+    //     Number::One => println!("1"),
+    //     Number::Two => println!("2"),
+    // }
+
+    // enum Color {
+    //     Red = 0xff0000,
+    //     // Green = 0x00ff00,
+    //     Blue = 0x0000ff,
+    // }
+    // println!("roses are #{:06x}", Color::Red as i32);
+    // println!("violets are #{:06x}", Color::Blue as i32);
+
+    #[derive(Debug)]
+    enum IpAddr {
+        V4(u8, u8, u8, u8),
+        V6(String),
     }
+    let x: fn(u8, u8, u8, u8) -> IpAddr = IpAddr::V4;
+    let y: fn(String) -> IpAddr = IpAddr::V6;
+    let home = IpAddr::V4(127, 0, 0, 1);
+    let loopback = IpAddr::V6(String::from("::1"));
+    println!(
+        "{:?}, {:?}, {:?}, {:?}",
+        x(192, 168, 1, 1),
+        y(String::from("V6")),
+        home,
+        loopback
+    );
 
-    impl People {
-        fn new(name: &'static str, gender: u32) -> Self {
-            return People { name, gender };
-        }
-        fn name(&self) {
-            println!("name: {:?}", self.name);
-        }
-        fn set_name(&mut self, name: &'static str) {
-            self.name = name;
-        }
-        fn gender(&self) {
-            let gender = if self.gender == 1 { "boy" } else { "girl" };
-            println!("gender: {:?}", gender);
-        }
+    enum Optionial {
+        Some(i32),
+        None,
     }
-
-    let mut people = People::new("Tom", 1);
-    people.name();
-    people.set_name("Jerry");
-    people.name();
-    people.gender();
-
-    struct Color(i32, i32, i32); // Tuple-Like Struct
-    let color = Color(0, 1, 2);
-    assert_eq!(color.0, 0);
-
-    struct Integer(u32); // Tuple-Like Struct New Type Mode
-    let int = Integer(10);
-    assert_eq!(int.0, 10);
-    // type MyInteger = Integer;
-    // let _ = MyInteger(20); // tuple-struct cannot be used as type
-
-    type Int = i32; // Type aliase
-    let new_int: Int = 10;
-    assert_eq!(new_int, 10);
-
-    struct Empty; // unit-struct
-    let x = Empty;
-    println!("{:p}", &x);
-    let y = x;
-    println!("{:p}", &y);
-    let z = Empty;
-    println!("{:p}", &z);
+    let s = Optionial::Some(42);
+    let _none = Optionial::None;
+    // let num = s.unwrap();
+    match s {
+        Optionial::Some(n) => println!("num is: {}", n),
+        Optionial::None => println!("None"),
+    }
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
