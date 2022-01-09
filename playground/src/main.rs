@@ -199,6 +199,14 @@ fn main() {
     type Int = i32; // Type aliase
     let new_int: Int = 10;
     assert_eq!(new_int, 10);
+
+    struct Empty; // unit-struct
+    let x = Empty;
+    println!("{:p}", &x);
+    let y = x;
+    println!("{:p}", &y);
+    let z = Empty;
+    println!("{:p}", &z);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
