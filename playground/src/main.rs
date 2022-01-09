@@ -158,7 +158,7 @@ fn main() {
     // assert_eq!(x, 1);
     // assert_eq!(y, 2);
 
-    #[derive(Debug, PartialEq)]
+    #[derive(Debug, PartialEq)] // Named-Field Struct
     struct People {
         name: &'static str,
         gender: u32,
@@ -185,6 +185,20 @@ fn main() {
     people.set_name("Jerry");
     people.name();
     people.gender();
+
+    struct Color(i32, i32, i32); // Tuple-Like Struct
+    let color = Color(0, 1, 2);
+    assert_eq!(color.0, 0);
+
+    struct Integer(u32); // Tuple-Like Struct New Type Mode
+    let int = Integer(10);
+    assert_eq!(int.0, 10);
+    // type MyInteger = Integer;
+    // let _ = MyInteger(20); // tuple-struct cannot be used as type
+
+    type Int = i32; // Type aliase
+    let new_int: Int = 10;
+    assert_eq!(new_int, 10);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
