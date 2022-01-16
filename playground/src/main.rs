@@ -230,34 +230,47 @@ fn main() {
     // println!("roses are #{:06x}", Color::Red as i32);
     // println!("violets are #{:06x}", Color::Blue as i32);
 
-    #[derive(Debug)]
-    enum IpAddr {
-        V4(u8, u8, u8, u8),
-        V6(String),
-    }
-    let x: fn(u8, u8, u8, u8) -> IpAddr = IpAddr::V4;
-    let y: fn(String) -> IpAddr = IpAddr::V6;
-    let home = IpAddr::V4(127, 0, 0, 1);
-    let loopback = IpAddr::V6(String::from("::1"));
-    println!(
-        "{:?}, {:?}, {:?}, {:?}",
-        x(192, 168, 1, 1),
-        y(String::from("V6")),
-        home,
-        loopback
-    );
+    // #[derive(Debug)]
+    // enum IpAddr {
+    //     V4(u8, u8, u8, u8),
+    //     V6(String),
+    // }
+    // let x: fn(u8, u8, u8, u8) -> IpAddr = IpAddr::V4;
+    // let y: fn(String) -> IpAddr = IpAddr::V6;
+    // let home = IpAddr::V4(127, 0, 0, 1);
+    // let loopback = IpAddr::V6(String::from("::1"));
+    // println!(
+    //     "{:?}, {:?}, {:?}, {:?}",
+    //     x(192, 168, 1, 1),
+    //     y(String::from("V6")),
+    //     home,
+    //     loopback
+    // );
 
-    enum Optionial {
-        Some(i32),
-        None,
-    }
-    let s = Optionial::Some(42);
-    let _none = Optionial::None;
-    // let num = s.unwrap();
-    match s {
-        Optionial::Some(n) => println!("num is: {}", n),
-        Optionial::None => println!("None"),
-    }
+    // enum Optionial {
+    //     Some(i32),
+    //     None,
+    // }
+    // let s = Optionial::Some(42);
+    // let _none = Optionial::None;
+    // // let num = s.unwrap();
+    // match s {
+    //     Optionial::Some(n) => println!("num is: {}", n),
+    //     Optionial::None => println!("None"),
+    // }
+
+    let mut v1 = vec![];
+    v1.push(1);
+    v1.push(2);
+    v1.push(3);
+    assert_eq!(v1, vec![1, 2, 3]);
+    let v2 = vec![0; 10];
+    assert_eq!(v2, vec![0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    let mut v3 = Vec::new();
+    v3.push(4);
+    v3.push(5);
+    v3.push(6);
+    assert_eq!(v3, vec![4, 5, 6]);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
