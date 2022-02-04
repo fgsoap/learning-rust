@@ -260,18 +260,18 @@ fn main() {
     //     Optionial::None => println!("None"),
     // }
 
-    let mut v1 = vec![];
-    v1.push(1);
-    v1.push(2);
-    v1.push(3);
-    assert_eq!(v1, vec![1, 2, 3]);
-    let v2 = vec![0; 10];
-    assert_eq!(v2, vec![0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-    let mut v3 = Vec::new();
-    v3.push(4);
-    v3.push(5);
-    v3.push(6);
-    assert_eq!(v3, vec![4, 5, 6]);
+    // let mut v1 = vec![];
+    // v1.push(1);
+    // v1.push(2);
+    // v1.push(3);
+    // assert_eq!(v1, vec![1, 2, 3]);
+    // let v2 = vec![0; 10];
+    // assert_eq!(v2, vec![0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    // let mut v3 = Vec::new();
+    // v3.push(4);
+    // v3.push(5);
+    // v3.push(6);
+    // assert_eq!(v3, vec![4, 5, 6]);
 
     let mut buf = VecDeque::new();
     buf.push_front(1);
@@ -281,6 +281,7 @@ fn main() {
     buf.push_back(3);
     buf.push_back(4);
     buf.push_back(5);
+    println!("{:?}", buf);
     assert_eq!(buf.get(2), Some(&3));
     assert_eq!(buf.get(3), Some(&4));
     assert_eq!(buf.get(4), Some(&5));
