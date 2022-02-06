@@ -1,4 +1,4 @@
-use std::collections::{LinkedList, VecDeque};
+use std::collections::{BTreeMap, HashMap, LinkedList, VecDeque};
 fn main() {
     // println!("Hello, world!");
     // let v = "hello world!";
@@ -286,20 +286,36 @@ fn main() {
     // assert_eq!(buf.get(3), Some(&4));
     // assert_eq!(buf.get(4), Some(&5));
 
-    let mut list1 = LinkedList::new();
-    list1.push_back('a');
-    let mut list2 = LinkedList::new();
-    list2.push_back('b');
-    list2.push_back('c');
-    list1.append(&mut list2);
-    println!("{:?}", list1);
-    println!("{:?}", list2);
-    list1.pop_front();
-    println!("{:?}", list1);
-    list1.push_front('e');
-    println!("{:?}", list1);
-    list2.push_front('f');
-    println!("{:?}", list2);
+    // let mut list1 = LinkedList::new();
+    // list1.push_back('a');
+    // let mut list2 = LinkedList::new();
+    // list2.push_back('b');
+    // list2.push_back('c');
+    // list1.append(&mut list2);
+    // println!("{:?}", list1);
+    // println!("{:?}", list2);
+    // list1.pop_front();
+    // println!("{:?}", list1);
+    // list1.push_front('e');
+    // println!("{:?}", list1);
+    // list2.push_front('f');
+    // list2.push_front('g');
+    // println!("{:?}", list2);
+
+    let mut hmap = HashMap::new();
+    let mut bmap = BTreeMap::new();
+    hmap.insert(3, 'c');
+    hmap.insert(1, 'a');
+    hmap.insert(2, 'b');
+    hmap.insert(5, 'e');
+    hmap.insert(4, 'd');
+    bmap.insert(3, 'c');
+    bmap.insert(2, 'b');
+    bmap.insert(1, 'a');
+    bmap.insert(5, 'e');
+    bmap.insert(4, 'd');
+    println!("{:?}", hmap);
+    println!("{:?}", bmap);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
