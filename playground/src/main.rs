@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, HashMap, LinkedList, VecDeque};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet, LinkedList, VecDeque};
 fn main() {
     // println!("Hello, world!");
     // let v = "hello world!";
@@ -302,20 +302,37 @@ fn main() {
     // list2.push_front('g');
     // println!("{:?}", list2);
 
-    let mut hmap = HashMap::new();
-    let mut bmap = BTreeMap::new();
-    hmap.insert(3, 'c');
-    hmap.insert(1, 'a');
-    hmap.insert(2, 'b');
-    hmap.insert(5, 'e');
-    hmap.insert(4, 'd');
-    bmap.insert(3, 'c');
-    bmap.insert(2, 'b');
-    bmap.insert(1, 'a');
-    bmap.insert(5, 'e');
-    bmap.insert(4, 'd');
-    println!("{:?}", hmap);
-    println!("{:?}", bmap);
+    // let mut hmap = HashMap::new();
+    // let mut bmap = BTreeMap::new();
+    // hmap.insert(3, 'c');
+    // hmap.insert(1, 'a');
+    // hmap.insert(2, 'b');
+    // hmap.insert(5, 'e');
+    // hmap.insert(4, 'd');
+    // bmap.insert(3, 'c');
+    // bmap.insert(2, 'b');
+    // bmap.insert(1, 'a');
+    // bmap.insert(5, 'e');
+    // bmap.insert(4, 'd');
+    // println!("{:?}", hmap);
+    // println!("{:?}", bmap);
+
+    let mut hbooks = HashSet::new();
+    let mut bbooks = BTreeSet::new();
+    hbooks.insert("A song of Ice and Fires");
+    hbooks.insert("A Clash of Kings");
+    hbooks.insert("A Storm of Swords");
+    if !hbooks.contains("A Storm of Swords") {
+        println!(
+            "We have {} books, bu the Storm of Swords is not in the list",
+            hbooks.len()
+        );
+    }
+    println!("{:?}", hbooks);
+    bbooks.insert("A song of Ice and Fires");
+    bbooks.insert("A Clash of Kings");
+    bbooks.insert("A Storm of Swords");
+    println!("{:?}", bbooks);
 }
 
 // pub fn math(op: fn(i32, i32) -> i32, a: i32, b: i32) -> i32 {
